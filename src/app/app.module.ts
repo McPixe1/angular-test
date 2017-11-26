@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpModule} from "@angular/http";
 import {HttpClientModule} from '@angular/common/http';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 import { Configuration } from './app.constants';
 import { DataService } from './shared/services/data.service';
 
@@ -30,6 +30,7 @@ const appRoutes: Routes = [
       // { enableTracing: true }
     ),
     BrowserModule,
+    NgxPaginationModule,
     HttpModule,
     HttpClientModule
   ],

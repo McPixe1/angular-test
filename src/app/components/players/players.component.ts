@@ -18,7 +18,7 @@ export class PlayersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._playerService.getPlayers();
+    this._playerService.getPlayers(0, 10);
     //this._playerService.getPlayer(1);
   }
 
