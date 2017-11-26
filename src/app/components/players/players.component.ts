@@ -13,14 +13,13 @@ export class PlayersComponent implements OnInit {
 
   public message: string;
 
-  constructor(
-      private _playerService: PlayerService) {
+  constructor(private _playerService: PlayerService) {
       this.message = 'PlayersComponent cargado';
   }
 
   ngOnInit() {
     this._playerService.getPlayers();
-    this._playerService.getPlayer(1);
+    //this._playerService.getPlayer(1);
   }
 
 }

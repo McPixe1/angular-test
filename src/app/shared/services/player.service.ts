@@ -7,8 +7,8 @@ import {Player} from '../../shared/models/player.model';
 @Injectable()
 export class PlayerService {
 
-    public players: Player[];
-    public values: any[];
+    public players: any[];
+    public player: any[];
     public path = 'posts';
 
     constructor(private _configuration: Configuration,  private _dataService: DataService)
@@ -16,9 +16,9 @@ export class PlayerService {
 
     public getPlayers(){
       this._dataService
-            .findAll(this.path)
-            .subscribe((data: any[]) => {
-              this.values = data;
+            .findAll(this.path, {_start:0,_limit:5})
+            .subscribe((data) => {
+              this.players = data.body;
               console.log(data);
             });
     }
@@ -26,8 +26,8 @@ export class PlayerService {
     public getPlayer(id){
       this._dataService
             .findOne(this.path, id)
-            .subscribe((data: any[]) => {
-              this.values = data;
+            .subscribe((data) => {
+              this.player = data;
               console.log(data);
             });
     }

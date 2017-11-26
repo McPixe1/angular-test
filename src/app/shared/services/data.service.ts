@@ -21,24 +21,24 @@ export class DataService {
     }
 
     //-------------------------METODOS HTTP-----------------------------//
-    public findAll<T>(
+    public findAll(
       path?: string,
       params?: any,
       headers?: Headers,
-    ): Observable<T> {
+    ): Observable<any> {
 
       const options: RequestOptions = this.getOptions(headers);
       const url: string = this.buildUrl(path, params, undefined );
-      console.log(url);
+
       return this.http.get(url, options).map(this.extractData);
     }
 
-    public findOne<T>(
+    public findOne(
       path?: string,
       id?: string,
       params?: any,
       headers?: Headers,
-    ): Observable<T> {
+    ): Observable<any> {
 
       const options: RequestOptions = this.getOptions(headers);
       const url: string = this.buildUrl(path, params, id);
@@ -52,8 +52,10 @@ export class DataService {
 
     //devvuelve los datos en json
     private extractData(res: Response) {
+        let headers = res.headers;
         let body = res.json();
-        return body || {};
+        let data = {headers, body};
+        return data;
     }
 
     // Pilla las options y las devuelve
